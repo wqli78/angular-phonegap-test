@@ -1,0 +1,53 @@
+CACHE MANIFEST
+
+# Time: Wed Sep 26 2012 19:02:32 GMT+0200 (CEST)
+# This manifest was created by confess.js, http://github.com/jamesgpearce/confess
+#
+# Retrieved URL: http://localhost:3501/#/phones
+# User-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11
+#
+# Config:
+#  task: appcache
+#  userAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11
+#  wait: 0
+#  consolePrefix: #
+#  verbose: true
+#  appcache:
+#   urlsFromDocument: true
+#   urlsFromRequests: false
+#   cacheFilter: .*
+#   networkFilter: null
+#  url: http://localhost:3501
+#  configFile: /usr/local/lib/node_modules/yeoman/lib/support/confess.json
+
+CACHE:
+http://localhost:3501/img/glyphicons-halflings-white.png
+http://localhost:3501/img/glyphicons-halflings.png
+http://www.google-analytics.com/ga.js
+img/phones/dell-streak-7.0.jpg
+img/phones/dell-venue.0.jpg
+img/phones/droid-2-global-by-motorola.0.jpg
+img/phones/droid-pro-by-motorola.0.jpg
+img/phones/lg-axis.0.jpg
+img/phones/motorola-atrix-4g.0.jpg
+img/phones/motorola-bravo-with-motoblur.0.jpg
+img/phones/motorola-charm-with-motoblur.0.jpg
+img/phones/motorola-defy-with-motoblur.0.jpg
+img/phones/motorola-xoom-with-wi-fi.0.jpg
+img/phones/motorola-xoom.0.jpg
+img/phones/nexus-s.0.jpg
+img/phones/samsung-galaxy-tab.0.jpg
+img/phones/samsung-gem.0.jpg
+img/phones/samsung-mesmerize-a-galaxy-s-phone.0.jpg
+img/phones/samsung-showcase-a-galaxy-s-phone.0.jpg
+img/phones/samsung-transform.0.jpg
+img/phones/sanyo-zio.0.jpg
+img/phones/t-mobile-g2.0.jpg
+img/phones/t-mobile-mytouch-4g.0.jpg
+scripts/e2affef8.scripts.js
+scripts/vendor/d10639ae.angular.js
+styles/6caa545b.main.css
+styles/ab3117de.bootstrap.css
+
+NETWORK:
+*
