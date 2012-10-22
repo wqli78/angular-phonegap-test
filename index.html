@@ -30,12 +30,28 @@
     <div data-role="content">  
  <div ng-controller="IndexCtrl"> 
 
+                <div class="ui-grid-b">
+                    <div class="ui-block-a">
+                        <h2>
+                            幼儿园
+                        </h2>
+                    </div>
+                    <div class="ui-block-b">
+                        <h2>
+                           {{score}} 分
+                        </h2>
+                    </div>
+                    <div class="ui-block-c">
+                        <h2>
+                          第 {{number+1}} / {{total}} 题
+                        </h2>
+                    </div>
+                </div>
        <p style="font-size:2em">{{currentQuestion.content}}</p> 
        <p ng-click="selectAnswer('A')"><a href="#two" data-role="button" >{{currentQuestion.A}}</a></p> 
        <p ng-click="selectAnswer('B')"><a href="#two" data-role="button">{{currentQuestion.B}}</a></p> 
        <p ng-click="selectAnswer('C')"><a href="#two" data-role="button">{{currentQuestion.C}}</a></p> 
        <p ng-click="selectAnswer('D')"><a href="#two" data-role="button">{{currentQuestion.D}}</a></p> 
-<span>得分</span>{{score}}<a href="index.html" data-role="button" data-inline="true">下一题</a>
 
           
 </div>
@@ -48,24 +64,6 @@
     </div><!-- /footer -->
     
 </div><!-- /page -->
-<h2>中医课堂-幼儿园试题</h2>
 
-
-
-       <p style="font-size:2em">下面哪项不属于中医的四诊？</p> 
-       <p><a href="#two" data-role="button">望诊</a></p> 
-       <p><a href="#two" data-role="button">问诊</a></p> 
-       <p><a href="#two" data-role="button">号脉</a></p> 
-       <p><a href="#two" data-role="button">推算</a></p> 
-<span>得分</span><a href="index.html" data-role="button" data-inline="true">下一题</a>
-
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
     </body>
 </html>

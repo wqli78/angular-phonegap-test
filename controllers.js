@@ -4,10 +4,11 @@
 
 function IndexCtrl($scope, $http, Zuser,Questions) {
 
-	var i =0;
+	$scope.number =0;
  	$scope.questions = Questions.get({},function(questions){
  		// console.log(questions.questions);
-	$scope.currentQuestion =$scope.questions.questions[i];
+	$scope.currentQuestion =$scope.questions.questions[$scope.number];
+	$scope.total =$scope.questions.questions.length;
  	});
 
  	$scope.score = 0;
@@ -31,8 +32,8 @@ function IndexCtrl($scope, $http, Zuser,Questions) {
 		} else {
 			alert("很遗憾，答错了！");
 		}
-		i++;
-		$scope.currentQuestion =$scope.questions.questions[i];
+		$scope.number++;
+		$scope.currentQuestion =$scope.questions.questions[$scope.number];
 
 	}
 	//查询参数
