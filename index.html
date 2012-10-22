@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title></title>
-        <meta name="description" content=""/>
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 
+        <link rel="stylesheet" href="styles/jquery.mobile-1.2.0.min.css"/>
+    <!-- make page testable for jasmine ui -->
+    <script type="text/javascript">eval(sessionStorage.jasmineui);</script>
 
-        <link rel="stylesheet" href="styles/jquery.mobile-1.2.0.min.css" />
         <script src="scripts/vendor/jquery-1.8.2.min.js"></script>
-        <script src="scripts/vendor/jquery.mobile-1.2.0.min.js"></script>   
-        <script src="scripts/vendor/d10639ae.angular.js"></script>
-     
-        <script src="scripts/vendor/jquery-mobile-angular-adapter-1.1.2-SNAPSHOT.js"></script>        
-    </head>
-    <body ng-app="zhongyi">
+        <script src="scripts/vendor/underscore-min.js"></script>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular-ui/build/angular-ui.min.js"></script>
+        <script src="lib/angular/angular-resource.js"></script>
+        <script src="services.js"></script>
+        <script src="controllers.js"></script>
+        <script src="app.js"></script>
+        <script src="lib/jquery-mobile/jquery.mobile.js"></script>
+    <title>中医课堂</title>
+</head>
+   <body ng-app="zhongyi">
 
 <div data-role="page">
 
@@ -26,13 +27,19 @@
         <h1>中医课堂-幼儿园</h1>
     </div><!-- /header -->
 
-    <div data-role="content">   
- 
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
+    <div data-role="content">  
+ <div ng-controller="IndexCtrl"> 
+
+       <p style="font-size:2em">{{currentQuestion.content}}</p> 
+       <p ng-click="selectAnswer('A')"><a href="#two" data-role="button" >{{currentQuestion.A}}</a></p> 
+       <p ng-click="selectAnswer('B')"><a href="#two" data-role="button">{{currentQuestion.B}}</a></p> 
+       <p ng-click="selectAnswer('C')"><a href="#two" data-role="button">{{currentQuestion.C}}</a></p> 
+       <p ng-click="selectAnswer('D')"><a href="#two" data-role="button">{{currentQuestion.D}}</a></p> 
+<span>得分</span>{{score}}<a href="index.html" data-role="button" data-inline="true">下一题</a>
 
           
+</div>
+
 
     </div><!-- /content -->
     
@@ -41,9 +48,17 @@
     </div><!-- /footer -->
     
 </div><!-- /page -->
+<h2>中医课堂-幼儿园试题</h2>
 
 
-        <script src="scripts/app.js"></script>
+
+       <p style="font-size:2em">下面哪项不属于中医的四诊？</p> 
+       <p><a href="#two" data-role="button">望诊</a></p> 
+       <p><a href="#two" data-role="button">问诊</a></p> 
+       <p><a href="#two" data-role="button">号脉</a></p> 
+       <p><a href="#two" data-role="button">推算</a></p> 
+<span>得分</span><a href="index.html" data-role="button" data-inline="true">下一题</a>
+
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
