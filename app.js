@@ -2,4 +2,4 @@
 
 
 
-var zhongyi = angular.module('zhongyi', ['Questions'])}]);
+var zhongyi = angular.module('zhongyi', ['Questions']);
