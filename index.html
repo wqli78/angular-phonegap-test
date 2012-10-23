@@ -19,50 +19,64 @@
     <title>中医课堂</title>
 </head>
    <body ng-app="zhongyi">
-
-<div data-role="page">
-
+<div  ng-controller="IndexCtrl">
+<div data-role="page" id="answerQuestion">
     <div data-role="header">
         <h1>中医课堂</h1>
     </div><!-- /header -->
-
     <div data-role="content">  
- <div ng-controller="IndexCtrl"> 
-
-                <div class="ui-grid-b">
-                    <div class="ui-block-a">
-                        <h2>
-                            {{grade.name}}
-                        </h2>
-                    </div>
-                    <div class="ui-block-b">
-                        <h2>
-                           {{score}} 分  <span id="right" style="background:yellow;display:none">正确</span> <span id="error" style="background:red;display:none">错误</span>
-                        </h2>
-                    </div>
-                    <div class="ui-block-c">
-                        <h2>
-                          第 {{number+1}} / {{total}} 题
-                        </h2>
-                    </div>
+         <div > 
+            <div class="ui-grid-b">
+                <div class="ui-block-a">
+                    <h2>
+                        {{grade.name}}
+                    </h2>
                 </div>
-       <p style="font-size:2em">{{currentQuestion.content}}</p> 
-       <p ng-click="selectAnswer('A')"><a href="#two" data-role="button" >{{currentQuestion.A}}</a></p> 
-       <p ng-click="selectAnswer('B')"><a href="#two" data-role="button">{{currentQuestion.B}}</a></p> 
-       <p ng-click="selectAnswer('C')"><a href="#two" data-role="button">{{currentQuestion.C}}</a></p> 
-       <p ng-click="selectAnswer('D')"><a href="#two" data-role="button">{{currentQuestion.D}}</a></p> 
-
-          
-</div>
-
-
+                <div class="ui-block-b">
+                    <h2>
+                       {{score}} 分  <span id="right" style="background:yellow;display:none">正确</span> <span id="error" style="background:red;display:none">错误</span>
+                    </h2>
+                </div>
+                <div class="ui-block-c">
+                    <h2>
+                      第 {{number+1}} / {{total}} 题
+                    </h2>
+                </div>
+            </div>
+           <p style="font-size:2em">{{currentQuestion.content}}</p> 
+           <p ng-click="selectAnswer('A')"><a href="#two" data-role="button" >{{currentQuestion.A}}</a></p> 
+           <p ng-click="selectAnswer('B')"><a href="#two" data-role="button">{{currentQuestion.B}}</a></p> 
+           <p ng-click="selectAnswer('C')"><a href="#two" data-role="button">{{currentQuestion.C}}</a></p> 
+           <p ng-click="selectAnswer('D')"><a href="#two" data-role="button">{{currentQuestion.D}}</a></p>       
+        </div>
     </div><!-- /content -->
-    
     <div data-role="footer">
         <h4>中医课堂页脚</h4>
-    </div><!-- /footer -->
-    
+    </div><!-- /footer --> 
 </div><!-- /page -->
 
+<div data-role="page" id="answerResult">
+    <div data-role="header">
+        <h1>中医课堂</h1>
+    </div><!-- /header -->
+    <div data-role="content">  
+        <div > 
+            <h2>
+                正确：{{rightNumber}}
+
+            </h2>
+            <h2>
+                得分：{{score}}
+            </h2>
+            <a data-role="button"  ng-click="restart()">
+                重新开始
+            </a>   
+        </div>
+    </div><!-- /content -->
+    <div data-role="footer">
+        <h4>中医课堂页脚</h4>
+    </div><!-- /footer --> 
+</div><!-- /page -->
+</div><!-- /controller -->
     </body>
 </html>
