@@ -4,22 +4,47 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 
-        <link rel="stylesheet" href="styles/jquery.mobile-1.2.0.min.css"/>
-    <!-- make page testable for jasmine ui -->
-    <script type="text/javascript">eval(sessionStorage.jasmineui);</script>
+        <link rel="stylesheet" href="vendor/jquery-mobile/jquery.mobile-1.2.0.min.css"/>
 
-        <script src="scripts/vendor/jquery-1.8.2.min.js"></script>
-        <script src="scripts/vendor/underscore-min.js"></script>
-        <script src="lib/angular/angular.js"></script>
-        <script src="lib/angular/angular-resource.js"></script>
+
+        <script src="vendor/jquery-1.8.2.min.js"></script>
+        <script src="vendor/jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+        <script src="vendor/underscore-min.js"></script>
+
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/angular/angular-resource.min.js"></script>
         <script src="services.js"></script>
         <script src="controllers.js"></script>
         <script src="app.js"></script>
-        <script src="lib/jquery-mobile/jquery.mobile.js"></script>
     <title>中医课堂</title>
 </head>
    <body ng-app="zhongyi">
+
 <div  ng-controller="IndexCtrl">
+
+<div data-role="page" id="home">
+    <div data-role="header">
+        <h1>中医课堂</h1>
+    </div><!-- /header -->
+    <div data-role="content">  
+          <a data-role="button" href="#page1" data-icon="check" data-iconpos="left">
+                    幼儿园
+                </a>
+                <a data-role="button" data-theme="e" href="#page1" data-icon="arrow-r" data-iconpos="left">
+                    小学
+                </a>
+                <a data-role="button" data-theme="a" href="#page1" data-icon="info" data-iconpos="left">
+                    初中
+                </a>
+                <a data-role="button" data-theme="a" href="#page1" data-icon="info" data-iconpos="left">
+                    高中
+                </a>
+    </div><!-- /content -->
+    <div data-role="footer">
+        <h4>中医课堂页脚</h4>
+    </div><!-- /footer --> 
+</div><!-- /page -->
+
 <div data-role="page" id="answerQuestion">
     <div data-role="header">
         <h1>中医课堂</h1>
@@ -44,10 +69,10 @@
                 </div>
             </div>
            <p style="font-size:2em">{{currentQuestion.content}}</p> 
-           <p ng-click="selectAnswer('A')"><a href="#two" data-role="button" >{{currentQuestion.A}}</a></p> 
-           <p ng-click="selectAnswer('B')"><a href="#two" data-role="button">{{currentQuestion.B}}</a></p> 
-           <p ng-click="selectAnswer('C')"><a href="#two" data-role="button">{{currentQuestion.C}}</a></p> 
-           <p ng-click="selectAnswer('D')"><a href="#two" data-role="button">{{currentQuestion.D}}</a></p>       
+           <p ng-click="selectAnswer('A')"><a href="#two" data-role="button" >A:{{currentQuestion.A}}</a></p> 
+           <p ng-click="selectAnswer('B')"><a href="#two" data-role="button">B: {{currentQuestion.B}}</a></p> 
+           <p ng-click="selectAnswer('C')"><a href="#two" data-role="button">C: {{currentQuestion.C}}</a></p> 
+           <p ng-click="selectAnswer('D')"><a href="#two" data-role="button">D: {{currentQuestion.D}}</a></p>       
         </div>
     </div><!-- /content -->
     <div data-role="footer">
@@ -77,6 +102,7 @@
         <h4>中医课堂页脚</h4>
     </div><!-- /footer --> 
 </div><!-- /page -->
+
 </div><!-- /controller -->
     </body>
 </html>

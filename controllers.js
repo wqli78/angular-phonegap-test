@@ -16,15 +16,15 @@ function IndexCtrl($scope, $http, Questions) {
 	//点击选项后的动作
 	$scope.selectAnswer = function(answer) {
 		if($scope.currentQuestion.answer == answer) {
+			$("#right").show(function() {
+				$("#right").fadeOut(1000);
+			});
 			$scope.score = $scope.score + 10;
 			$scope.rightNumber++;
-			$("#right").show(function() {
-				$("#right").fadeOut(2000);
-			});
 			// alert("恭喜您，答对了，加10分！"); 
 		} else {
 			$("#error").show(function() {
-				$("#error").fadeOut(2000);
+				$("#error").fadeOut(1000);
 			});
 			// alert("很遗憾，答错了！");
 		}
