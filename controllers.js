@@ -6,14 +6,27 @@ function IndexCtrl($scope, $http, Questions) {
 
 	myInit();
 
-	$scope.grade = Questions.get({}, function(grade) { //题库对象
-		// console.log(questions.questions);
-		$scope.currentQuestion = $scope.grade.questions[$scope.number];
-		$scope.total = $scope.grade.questions.length;
-	});
 
 
-	//点击选项后的动作
+	//选择考试阶段
+	$scope.selectLevel = function(level) {
+		var gradeName="youeryuan";
+		if(level == 1) {
+			gradeName = "youeryuan";
+		} else if(level == 2) {
+			gradeName = "xiaoxue";
+		}
+		$scope.grade = Questions.get({gradeName:gradeName}, function(grade) { //题库对象
+			// console.log($scope.grade);
+			$scope.currentQuestion = $scope.grade.questions[$scope.number];
+			$scope.total = $scope.grade.questions.length;
+		});
+
+		$.mobile.changePage($('#answerQuestion'));
+
+	};
+
+	//选择答案
 	$scope.selectAnswer = function(answer) {
 		if($scope.currentQuestion.answer == answer) {
 			$("#right").show(function() {

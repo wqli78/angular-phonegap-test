@@ -9,7 +9,7 @@ value('version', '0.1');
 
 
 angular.module('Questions', ['ngResource']).factory('Questions', function($resource) {
-	return $resource('questions/youeryuan.json', {}, {
+	return $resource('questions/:gradeName.json', {}, {
 		'query': {
 			method: 'GET',
 			params: {},

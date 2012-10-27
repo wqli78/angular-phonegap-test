@@ -27,21 +27,25 @@
         <h1>中医课堂</h1>
     </div><!-- /header -->
     <div data-role="content">  
-          <a data-role="button" href="#page1" data-icon="check" data-iconpos="left">
+         <p ng-click="selectLevel(1)"> <a data-role="button" href="#page1" data-icon="check" data-iconpos="left">
                     幼儿园
                 </a>
-                <a data-role="button" data-theme="e" href="#page1" data-icon="arrow-r" data-iconpos="left">
+            </p>
+               <p ng-click="selectLevel(2)"> <a data-role="button" data-theme="e" href="#page1" data-icon="arrow-r" data-iconpos="left">
                     小学
                 </a>
-                <a data-role="button" data-theme="a" href="#page1" data-icon="info" data-iconpos="left">
+            </p>
+                <p ng-click="selectLevel(3)"><a data-role="button" data-theme="a" href="#page1" data-icon="info" data-iconpos="left">
                     初中
                 </a>
-                <a data-role="button" data-theme="a" href="#page1" data-icon="info" data-iconpos="left">
+            </p>
+                <p ng-click="selectLevel(4)"><a data-role="button" data-theme="a" href="#page1" data-icon="info" data-iconpos="left">
                     高中
                 </a>
+            </p>
     </div><!-- /content -->
     <div data-role="footer">
-        <h4>中医课堂页脚</h4>
+        <h4>学习中医，养护生命！</h4>
     </div><!-- /footer --> 
 </div><!-- /page -->
 
@@ -76,7 +80,7 @@
         </div>
     </div><!-- /content -->
     <div data-role="footer">
-        <h4>中医课堂页脚</h4>
+        <h4>学习中医，养护生命！</h4>
     </div><!-- /footer --> 
 </div><!-- /page -->
 
@@ -95,11 +99,14 @@
             </h2>
             <a data-role="button"  ng-click="restart()">
                 重新开始
+            </a> 
+            <a data-role="button"  href="#home">
+                回到首页
             </a>   
         </div>
     </div><!-- /content -->
     <div data-role="footer">
-        <h4>中医课堂页脚</h4>
+        <h4>学习中医，养护生命！</h4>
     </div><!-- /footer --> 
 </div><!-- /page -->
 
