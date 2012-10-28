@@ -29,17 +29,16 @@ function IndexCtrl($scope, $http, Questions) {
 		if($scope.currentQuestion.answer == answer) {
 			$("#right").show(function() {
 				$("#right").fadeOut(1000,function(){
-					$scope.score = $scope.score + 10;
-					$scope.rightNumber++;
-					$scope.nextQuestion();
 				});
 			});
+			$scope.score = $scope.score + 10;
+			$scope.rightNumber++;
 		} else {
 			$("#error").show(function() {
 				$("#error").fadeOut(1000);
 			});
-			$scope.nextQuestion();
 		}
+		$scope.nextQuestion();
 	};
 
 	$scope.nextQuestion = function(){
