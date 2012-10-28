@@ -28,21 +28,14 @@
     </div><!-- /header -->
     <div data-role="content">  
          <p ng-click="selectLevel(1)"> <a data-role="button" href="#page1" data-icon="check" data-iconpos="left">
-                    幼儿园
+                    初级
                 </a>
             </p>
                <p ng-click="selectLevel(2)"> <a data-role="button" data-theme="e" href="#page1" data-icon="arrow-r" data-iconpos="left">
-                    小学
+                    高级
                 </a>
             </p>
-                <p ng-click="selectLevel(3)"><a data-role="button" data-theme="a" href="#page1" data-icon="info" data-iconpos="left">
-                    初中
-                </a>
-            </p>
-                <p ng-click="selectLevel(4)"><a data-role="button" data-theme="a" href="#page1" data-icon="info" data-iconpos="left">
-                    高中
-                </a>
-            </p>
+                
     </div><!-- /content -->
     <div data-role="footer">
         <h4>学习中医，养护生命！</h4>
@@ -54,30 +47,36 @@
         <h1>中医课堂</h1>
     </div><!-- /header -->
     <div data-role="content">  
-         <div > 
-            <div class="ui-grid-b">
-                <div class="ui-block-a">
-                    <h2>
-                        {{grade.name}}
-                    </h2>
-                </div>
-                <div class="ui-block-b">
-                    <h2>
-                       {{score}} 分  <span id="right" style="background:yellow;display:none">正确</span> <span id="error" style="background:red;display:none">错误</span>
-                    </h2>
-                </div>
-                <div class="ui-block-c">
-                    <h2>
-                      第 {{number+1}} / {{total}} 题
-                    </h2>
-                </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a"> 
+            <h2>
+                {{grade.name}}
+            </h2>
             </div>
-           <p style="font-size:2em">{{currentQuestion.content}}</p> 
-           <p ng-click="selectAnswer('A')"><a href="#two" data-role="button" >A:{{currentQuestion.A}}</a></p> 
-           <p ng-click="selectAnswer('B')"><a href="#two" data-role="button">B: {{currentQuestion.B}}</a></p> 
-           <p ng-click="selectAnswer('C')"><a href="#two" data-role="button">C: {{currentQuestion.C}}</a></p> 
-           <p ng-click="selectAnswer('D')"><a href="#two" data-role="button">D: {{currentQuestion.D}}</a></p>       
+            <div class="ui-block-b">
+            <h2>
+              第 {{number+1}} / {{total}} 题
+            </h2>
+            </div>
         </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a"> 
+            <h2>
+               {{score}} 分  
+            </h2>
+            </div>
+            <div class="ui-block-b">
+            <h2>
+              <span id="right" style="background:yellow;display:none">正确</span> <span id="error" style="background:red;display:none">错误</span>
+            </h2>
+            </div>
+        </div>
+       <p style="font-size:2em">{{currentQuestion.content}}</p> 
+       <p ng-click="selectAnswer('A')"><a href="#two" data-role="button" >A:{{currentQuestion.A}}</a></p> 
+       <p ng-click="selectAnswer('B')"><a href="#two" data-role="button">B: {{currentQuestion.B}}</a></p> 
+       <p ng-click="selectAnswer('C')"><a href="#two" data-role="button">C: {{currentQuestion.C}}</a></p> 
+       <p ng-click="selectAnswer('D')"><a href="#two" data-role="button">D: {{currentQuestion.D}}</a></p>       
+
     </div><!-- /content -->
     <div data-role="footer">
         <h4>学习中医，养护生命！</h4>
