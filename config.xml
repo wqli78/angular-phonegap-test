@@ -3,7 +3,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.zhongyixuetang"
         version   = "1.0.0">
-    <name>zhongyixuetang</name>
+    <name>中医学堂</name>
 
     <description>
         中医基础知识程序，使用选择题的方式，帮助用户由浅入深学习中医知识。
