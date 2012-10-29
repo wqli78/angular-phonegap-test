@@ -16,6 +16,13 @@
         <script src="services.js"></script>
         <script src="controllers.js"></script>
         <script src="app.js"></script>
+
+        <<script type="text/javascript">
+        $( document ).bind( "mobileinit", function() {
+            $.support.cors=true;
+            $.mobile.allowCrossDomainPages = true;
+        });
+        </script>
     <title>中医课堂</title>
 </head>
    <body ng-app="zhongyi">
