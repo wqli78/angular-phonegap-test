@@ -20,7 +20,7 @@ function IndexCtrl($scope, $http, Questions) {
 			$scope.total = $scope.grade.questions.length;
 		});
 
-		$.mobile.changePage($('#answerQuestion'));
+		//$.mobile.changePage($('#answerQuestion'));
 
 	};
 

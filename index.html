@@ -25,91 +25,24 @@
         </script>
     <title>中医课堂</title>
 </head>
-   <body ng-app="zhongyi">
+   <body >
 
-<div  ng-controller="IndexCtrl">
+<div  ng-app="zhongyi" ng-controller="IndexCtrl">
 
 <div data-role="page" id="home">
     <div data-role="header">
         <h1>中医课堂</h1>
     </div><!-- /header -->
     <div data-role="content">  
-         <p > <a data-role="button" href="anserquestion.html" data-icon="check" data-iconpos="left" data-transition="slide">
-                    初级2
+         <p > <a data-role="button" href="anserquestion.html" data-icon="check" data-iconpos="left" data-ajax="false" data-transition="slide">
+                    中医三通诊断
                 </a>
             </p>
-               <p ng-click="selectLevel(2)"> <a data-role="button" data-theme="e" href="#page1" data-icon="arrow-r" data-iconpos="left">
-                    高级
+               <p > <a data-role="button" data-theme="e" href="anserquestion.html" data-icon="arrow-r"  data-ajax="false" data-iconpos="left">
+                    中医知识测验
                 </a>
             </p>
                 
-    </div><!-- /content -->
-    <div data-role="footer">
-        <h4>学习中医，养护生命！</h4>
-    </div><!-- /footer --> 
-</div><!-- /page -->
-
-<div data-role="page" id="answerQuestion">
-    <div data-role="header">
-        <h1>中医课堂</h1>
-    </div><!-- /header -->
-    <div data-role="content">  
-        <div class="ui-grid-a">
-            <div class="ui-block-a"> 
-            <h2>
-                {{grade.name}}
-            </h2>
-            </div>
-            <div class="ui-block-b">
-            <h2>
-              第 {{number+1}} / {{total}} 题
-            </h2>
-            </div>
-        </div>
-        <div class="ui-grid-a">
-            <div class="ui-block-a"> 
-            <h2>
-               {{score}} 分  
-            </h2>
-            </div>
-            <div class="ui-block-b">
-            <h2>
-              <span id="right" style="background:yellow;display:none">正确</span> <span id="error" style="background:red;display:none">错误</span>
-            </h2>
-            </div>
-        </div>
-       <p style="font-size:2em">{{currentQuestion.content}}</p> 
-       <p ng-click="selectAnswer('A')"><a href="#two" data-role="button" >A:{{currentQuestion.A}}</a></p> 
-       <p ng-click="selectAnswer('B')"><a href="#two" data-role="button">B: {{currentQuestion.B}}</a></p> 
-       <p ng-click="selectAnswer('C')"><a href="#two" data-role="button">C: {{currentQuestion.C}}</a></p> 
-       <p ng-click="selectAnswer('D')"><a href="#two" data-role="button">D: {{currentQuestion.D}}</a></p>       
-
-    </div><!-- /content -->
-    <div data-role="footer">
-        <h4>学习中医，养护生命！</h4>
-    </div><!-- /footer --> 
-</div><!-- /page -->
-
-<div data-role="page" id="answerResult">
-    <div data-role="header">
-        <h1>中医课堂</h1>
-    </div><!-- /header -->
-    <div data-role="content">  
-        <div > 
-            <h2>
-                正确：{{rightNumber}}
-
-            </h2>
-            <h2>
-                得分：{{score}}
-            </h2>
-            <a data-role="button"  ng-click="restart()">
-                重新开始
-            </a> 
-            <a data-role="button"  href="#home">
-                回到首页
-            </a>   
-        </div>
     </div><!-- /content -->
     <div data-role="footer">
         <h4>学习中医，养护生命！</h4>
