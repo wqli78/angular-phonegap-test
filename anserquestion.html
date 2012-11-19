@@ -6,7 +6,6 @@
 
         <link rel="stylesheet" href="vendor/jquery-mobile/jquery.mobile-1.2.0.min.css"/>
 
-
         <script src="vendor/jquery-1.8.2.min.js"></script>
         <script src="vendor/jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
         <script src="vendor/underscore-min.js"></script>
@@ -34,11 +33,11 @@
         <h1>中医课堂</h1>
     </div><!-- /header -->
     <div data-role="content">  
-         <p ng-click="selectLevel(1)"> <a data-role="button"  data-icon="check" data-iconpos="left">
+         <p ng-click="selectLevel(1)"> <a data-role="button"  data-icon="arrow-r" data-iconpos="right">
                     初级
                 </a>
             </p>
-               <p ng-click="selectLevel(2)"> <a data-role="button" data-theme="e" href="#page1" data-icon="arrow-r" data-iconpos="left">
+               <p ng-click="selectLevel(2)"> <a data-role="button" data-theme="e" href="#page1" data-icon="arrow-r" data-iconpos="right">
                     高级
                 </a>
             </p>
@@ -54,6 +53,7 @@
         <h1>中医课堂</h1>
     </div><!-- /header -->
     <div data-role="content">  
+
         <div class="ui-grid-a">
             <div class="ui-block-a"> 
             <h2>
@@ -73,9 +73,15 @@
             </h2>
             </div>
             <div class="ui-block-b">
-            <h2>
-              <span id="right" style="background:yellow;display:none">正确</span> <span id="error" style="background:red;display:none">错误</span>
-            </h2>
+<div data-role="popup" data-transition="slidedown" id="answerOk" data-overlay-theme="a" class="ui-content">
+     <p>恭喜，回答正确！<p>
+</div>
+ <div data-role="popup" id="answerError"  data-transition="slideup" data-overlay-theme="b" class="ui-content">
+     <p>可惜，回答错误！<p>
+</div>
+    
+
+
             </div>
         </div>
        <p style="font-size:2em">{{currentQuestion.content}}</p> 
@@ -98,7 +104,6 @@
         <div > 
             <h2>
                 正确：{{rightNumber}}
-
             </h2>
             <h2>
                 得分：{{score}}
