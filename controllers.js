@@ -13,6 +13,8 @@ function IndexCtrl($scope, $http, Questions) {
 			gradeName = "youeryuan";
 		} else if(level == 2) {
 			gradeName = "xiaoxue";
+		}else{
+			gradeName = level;
 		}
 		$scope.grade = Questions.get({
 			gradeName: gradeName
@@ -21,7 +23,6 @@ function IndexCtrl($scope, $http, Questions) {
 			$scope.currentQuestion = $scope.grade.questions[$scope.number];
 			$scope.total = $scope.grade.questions.length;
 		});
-
 		$.mobile.changePage($('#answerQuestion'), {
 			transition: "slide"
 		});
@@ -32,7 +33,7 @@ function IndexCtrl($scope, $http, Questions) {
 	$scope.selectAnswer = function(answer) {
 		if($scope.currentQuestion.answer == answer) {
 			// $("#right").show(function() {
-			// 	$("#right").fadeOut(1000, function() {});
+			//	$("#right").fadeOut(1000, function() {});
 			// });
 			$scope.score = $scope.score + 10;
 			$scope.rightNumber++;
@@ -46,10 +47,8 @@ function IndexCtrl($scope, $http, Questions) {
 			setTimeout(function() {
 				$("#answerError").popup("close");
 				$scope.nextQuestion();
-			}, 1000);;
+			}, 1000);
 		}
-
-
 	};
 
 	$scope.nextQuestion = function() {
