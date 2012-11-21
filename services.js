@@ -17,3 +17,19 @@ angular.module('Questions', ['ngResource']).factory('Questions', function($resou
 		}
 	});
 });
+
+var remoteUrl = 'http://localhost:3000/api/getQuestion';
+angular.module('RemoteQuestions', ['ngResource']).factory('RemoteQuestions', function($resource) {
+	return $resource(remoteUrl, {}, {
+		'query': {
+			method: 'GET',
+			params: {},
+			isArray: true
+		},
+		'jsonp': {
+			method: 'JSONP',
+			params: {},
+			isArray: true
+		}
+	});
+});

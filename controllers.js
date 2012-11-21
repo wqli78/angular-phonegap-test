@@ -2,11 +2,36 @@
 
 /* Controllers */
 
-function IndexCtrl($scope, $http, Questions) {
+function IndexCtrl($scope, $http, Questions,RemoteQuestions) {
 
 	//选择考试阶段
 	$scope.selectLevel = function(level) {
 
+		$scope.method = 'JSONP';
+		$scope.url = 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero'
+			 $http({method: $scope.method, url: $scope.url}).
+			success(function(data, status) {
+			$scope.status = status;
+			$scope.data = data;
+			}).
+			error(function(data, status) {
+			$scope.data = data || "Request failed";
+			$scope.status = status;
+			});
+
+		$http({method: 'JSONP', url: 'http://localhost:3000/api/getQuestion?callback=JSON_CALLBACK'}).
+    success(function(data, status, headers, config) {
+			alert(data.content);
+    // this callback will be called asynchronously
+    // when the response is available
+    }).
+    error(function(data, status, headers, config) {
+    	alert(status);
+    	alert(headers);
+    // called asynchronously if an error occurs
+    // or server returns response with status
+    // code outside of the <200, 400) range
+    });
 		myInit();
 		var gradeName = "youeryuan";
 		if(level == 1) {
