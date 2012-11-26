@@ -27,7 +27,7 @@
 </head>
    <body >
 
-<div  ng-app="zhongyi" ng-controller="IndexCtrl">
+<div  ng-app="zhongyi" >
 
 <div data-role="page" id="home">
     <div data-role="header">
@@ -115,7 +115,7 @@
     </div><!-- /header -->
     <div data-role="content">  
 
-        <p ng-click="selectLevel(1)"> <a data-role="button"  href="" data-icon="arrow-r"   data-transition="slide" data-iconpos="right">
+        <p ng-click="selectSantong('santongTiantong')"> <a data-role="button"  href="" data-icon="arrow-r"   data-transition="slide" data-iconpos="right">
                 天通测试
             </a>
         </p>      
@@ -137,6 +137,38 @@
 </div><!-- /page -->
 
 
+
+<div data-role="page" id="santong_answer">
+    <div data-role="header">
+        <h1>中医课堂</h1>
+    </div><!-- /header -->
+    <div data-role="content">  
+
+        <div class="ui-grid-a">
+            <div class="ui-block-a"> 
+            <h2>
+                {{grade.name}}
+            </h2>
+            </div>
+            <div class="ui-block-b">
+            <h2>
+              第 {{number+1}} / {{total}} 题
+            </h2>
+            </div>
+        </div>
+
+       <p style="font-size:2em">{{currentQuestion.content}}</p> 
+       <p ng-click="selectAnswer('A')"><a href="#two" data-role="button" >{{currentQuestion.A}}</a></p> 
+       <p ng-click="selectAnswer('B')"><a href="#two" data-role="button">{{currentQuestion.B}}</a></p>    
+
+    </div><!-- /content -->
+    <div data-role="footer">
+        <h4>学习中医，养护生命！</h4>
+    </div><!-- /footer --> 
+</div><!-- /page -->
+
+
+<div ng-controller="IndexCtrl">
 <div data-role="page" id="zhishi_index">
     <div data-role="header">
         <h1>中医课堂</h1>
@@ -184,15 +216,13 @@
             </h2>
             </div>
             <div class="ui-block-b">
-<div data-role="popup" data-transition="slidedown" id="answerOk" data-overlay-theme="a" class="ui-content">
-     <p>恭喜，回答正确！<p>
-</div>
- <div data-role="popup" id="answerError"  data-transition="slideup" data-overlay-theme="b" class="ui-content">
-     <p>遗憾，回答错误！<p>
-</div>
+                <div data-role="popup" data-transition="slidedown" id="answerOk" data-overlay-theme="a" class="ui-content">
+                     <p>恭喜，回答正确！<p>
+                </div>
+                 <div data-role="popup" id="answerError"  data-transition="slideup" data-overlay-theme="b" class="ui-content">
+                     <p>遗憾，回答错误！<p>
+                </div>
     
-
-
             </div>
         </div>
        <p style="font-size:2em">{{currentQuestion.content}}</p> 
@@ -231,8 +261,7 @@
         <h4>学习中医，养护生命！</h4>
     </div><!-- /footer --> 
 </div><!-- /page -->
-
-
+</div>
 
 </div><!-- /controller -->
     </body>

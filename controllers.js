@@ -5,9 +5,35 @@
 function IndexCtrl($scope, $http, Questions,RemoteQuestions) {
 
 
+	//选择考试阶段
+	$scope.selectSantong = function(level) {
+		myInit();
+		var gradeName = level;
+		$scope.grade = Questions.get({
+			gradeName: gradeName
+		}, function(grade) { //题库对象
+			// console.log($scope.grade);
+			$scope.currentQuestion = $scope.grade.questions[$scope.number];
+			$scope.total = $scope.grade.questions.length;
+		});
+		$.mobile.changePage($('#santong_answer'), {
+			transition: "slide"
+		});
+
+	};
+
+	$scope.selectAnswer = function(answer) {
+		if (answer == 'A'){
+		}
+		$scope.number++;
+	};
 
 	//选择考试阶段
 	$scope.selectLevel = function(level) {
+
+		RemoteQuestions.query({},function(data){
+			console.log(data);
+		});
 
 		$.ajax({dataType:"jsonp",url:'http://localhost:3000/api/getQuestion?callback=?',success:function(data){
 			console.log(data.name);
