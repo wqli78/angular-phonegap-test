@@ -2,78 +2,107 @@
 
 /* Controllers */
 
-function IndexCtrl($scope, $http, Questions,RemoteQuestions) {
+function IndexCtrl($scope, $http, Questions, RemoteQuestions) {
+
 
 
 	//选择考试阶段
-	$scope.selectSantong = function(level) {
-		myInit();
-		var gradeName = level;
-		$scope.grade = Questions.get({
-			gradeName: gradeName
+	$scope.selectSantong = function(qiaoName) {
+		// myInit();
+		var qiaoName = qiaoName || 'biqiao';
+		$scope.santongJson = Questions.get({
+			gradeName: "santong"
 		}, function(grade) { //题库对象
 			// console.log($scope.grade);
-			$scope.currentQuestion = $scope.grade.questions[$scope.number];
-			$scope.total = $scope.grade.questions.length;
+			$scope.currentQiao = $scope.santongJson[qiaoName];
+			$scope.currentQuestion = $scope.currentQiao.questions.start;
+			// $scope.total = $scope.grade.questions.length;
 		});
 		$.mobile.changePage($('#santong_answer'), {
 			transition: "slide"
 		});
-
 	};
 
-	$scope.selectAnswer = function(answer) {
-		if (answer == 'A'){
+	$scope.STselectAnswer = function(answer) {
+		console.log(answer);
+		var answer = $scope.currentQuestion[answer];
+		console.log($scope.currentQuestion);
+		console.log(answer);
+		if(_.indexOf(['ok','fail','hs','hx','rs','rx'],answer)!=-1) {
+			$scope.resultInfo = $scope.currentQiao.result[answer].content
+			$.mobile.changePage($('#STanswerResult'), {
+				transition: "slide"
+			});
+		} else  {
+			$scope.currentQuestion = $scope.currentQiao.questions[answer];
 		}
-		$scope.number++;
 	};
 
-	//选择考试阶段
+	$scope.STrestart = function() {
+		$scope.currentQuestion = $scope.currentQiao.questions["start"];
+		$.mobile.changePage($('#santong_answer'), {
+				transition: "slide"
+			});
+	}
+
+
+
+	//普通答题代码
 	$scope.selectLevel = function(level) {
 
-		RemoteQuestions.query({},function(data){
+		RemoteQuestions.query({}, function(data) {
 			console.log(data);
 		});
 
-		$.ajax({dataType:"jsonp",url:'http://localhost:3000/api/getQuestion?callback=?',success:function(data){
-			console.log(data.name);
-		}});
+		$.ajax({
+			dataType: "jsonp",
+			url: 'http://localhost:3000/api/getQuestion?callback=?',
+			success: function(data) {
+				console.log(data.name);
+			}
+		});
 
 		$scope.method = 'JSONP';
 		$scope.url = 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero'
-			 $http({method: $scope.method, url: $scope.url}).
-			success(function(data, status) {
+		$http({
+			method: $scope.method,
+			url: $scope.url
+		}).
+		success(function(data, status) {
 			$scope.status = status;
 			$scope.data = data;
 
-			}).
-			error(function(data, status) {
+		}).
+		error(function(data, status) {
 			$scope.data = data || "Request failed";
 			$scope.status = status;
-			});
+		});
 
-		$http({method: 'JSONP', url: 'http://localhost:3000/api/getQuestion?callback=JSON_CALLBACK2'}).
-    success(function(data, status, headers, config) {
+		$http({
+			method: 'JSONP',
+			url: 'http://localhost:3000/api/getQuestion?callback=JSON_CALLBACK2'
+		}).
+		success(function(data, status, headers, config) {
 			alert(data.name);
 			console.log(data);
-    // this callback will be called asynchronously
-    // when the response is available
-    }).
-    error(function(data, status, headers, config) {
-    	console.log('error');
-    	console.log(status);
-    	console.log(headers);
-    // called asynchronously if an error occurs
-    // or server returns response with status
-    // code outside of the <200, 400) range
-    });
+			// this callback will be called asynchronously
+			// when the response is available
+		}).
+		error(function(data, status, headers, config) {
+			console.log('error');
+			console.log(status);
+			console.log(headers);
+			// called asynchronously if an error occurs
+			// or server returns response with status
+			// code outside of the <200, 400) range
+		});
 		myInit();
 		var gradeName = "youeryuan";
 		if(level == 1) {
 			gradeName = "youeryuan";
 		} else if(level == 2) {
 			gradeName = "xiaoxue";
-		}else{
+		} else {
 			gradeName = level;
 		}
 		$scope.grade = Questions.get({
@@ -120,7 +149,7 @@ function IndexCtrl($scope, $http, Questions,RemoteQuestions) {
 
 		}
 		//将此时的变量状态显式通知html模版进行更新
-		$scope.$apply(function(){   });
+		$scope.$apply(function() {});
 	};
 
 	//重新开始答题

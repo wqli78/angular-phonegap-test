@@ -27,7 +27,8 @@
 </head>
    <body >
 
-<div  ng-app="zhongyi" >
+<div  ng-app="zhongyi" ng-controller="IndexCtrl">
+
 
 <div data-role="page" id="home">
     <div data-role="header">
@@ -115,17 +116,17 @@
     </div><!-- /header -->
     <div data-role="content">  
 
-        <p ng-click="selectSantong('santongTiantong')"> <a data-role="button"  href="" data-icon="arrow-r"   data-transition="slide" data-iconpos="right">
-                天通测试
+        <p ng-click="selectSantong('biqiao')"> <a data-role="button"  href="" data-icon="arrow-r"   data-transition="slide" data-iconpos="right">
+                鼻窍
             </a>
         </p>      
 
         <p > <a data-role="button"  href="anserquestion.html" data-icon="arrow-r"  data-transition="slide" data-iconpos="right">
-                地通测试
+                皮窍、毛窍
             </a>
         </p>      
         <p > <a data-role="button"  href="anserquestion.html" data-icon="arrow-r"  data-transition="slide" data-iconpos="right">
-                人通测试
+                喉窍
             </a>
         </p>      
 
@@ -147,19 +148,18 @@
         <div class="ui-grid-a">
             <div class="ui-block-a"> 
             <h2>
-                {{grade.name}}
+                {{currentQiao.name}}
             </h2>
             </div>
             <div class="ui-block-b">
             <h2>
-              第 {{number+1}} / {{total}} 题
             </h2>
             </div>
         </div>
 
        <p style="font-size:2em">{{currentQuestion.content}}</p> 
-       <p ng-click="selectAnswer('A')"><a href="#two" data-role="button" >{{currentQuestion.A}}</a></p> 
-       <p ng-click="selectAnswer('B')"><a href="#two" data-role="button">{{currentQuestion.B}}</a></p>    
+       <p ng-click="STselectAnswer('y')"><a href="" data-role="button" >是</a></p> 
+       <p ng-click="STselectAnswer('n')"><a href="" data-role="button">否</a></p>    
 
     </div><!-- /content -->
     <div data-role="footer">
@@ -168,7 +168,38 @@
 </div><!-- /page -->
 
 
-<div ng-controller="IndexCtrl">
+<div data-role="page" id="STanswerResult">
+    <div data-role="header">
+        <h1>中医课堂</h1>
+    </div><!-- /header -->
+    <div data-role="content">  
+        <div > 
+            <h2>
+                {{resultInfo}}
+            </h2>
+            <h2>
+            </h2>
+            <a data-role="button"  ng-click="STrestart()">
+                重新开始
+            </a> 
+            <a data-role="button"  href="#santong_index">
+                返回
+            </a>   
+        </div>
+    </div><!-- /content -->
+    <div data-role="footer">
+        <h4>学习中医，养护生命！</h4>
+    </div><!-- /footer --> 
+</div><!-- /page -->
+
+
+
+
+
+
+
+
+
 <div data-role="page" id="zhishi_index">
     <div data-role="header">
         <h1>中医课堂</h1>
@@ -261,7 +292,6 @@
         <h4>学习中医，养护生命！</h4>
     </div><!-- /footer --> 
 </div><!-- /page -->
-</div>
 
 </div><!-- /controller -->
     </body>
