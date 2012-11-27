@@ -24,10 +24,10 @@ function IndexCtrl($scope, $http, Questions, RemoteQuestions) {
 	};
 
 	$scope.STselectAnswer = function(answer) {
-		console.log(answer);
+		// console.log(answer);
 		var answer = $scope.currentQuestion[answer];
-		console.log($scope.currentQuestion);
-		console.log(answer);
+		// console.log($scope.currentQuestion);
+		// console.log(answer);
 		if(_.indexOf(['ok','fail','hs','hx','rs','rx'],answer)!=-1) {
 			$scope.resultInfo = $scope.currentQiao.result[answer].content
 			$.mobile.changePage($('#STanswerResult'), {
