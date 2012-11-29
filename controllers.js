@@ -13,7 +13,7 @@ function IndexCtrl($scope, $filter, $http, Questions, RemoteQuestions, localStor
 	//可用来刷新动态html的jm效果
 	// $('#list_container').trigger('create');
 	//定义症状输入窗口自动过滤动作
-	$("#ST_searchBox").keyup(function() {
+	$("#ST_searchBox").blur(function() {
 		var filter = $(this).val();
 		$scope.filterQiaos = $filter('filter')($scope.santongJson.qiaos, filter);
 		console.log(filter);
@@ -209,7 +209,7 @@ function zhenliaoCtrl($scope, $filter, $http, Questions, RemoteQuestions, localS
 	$scope.filterZhengzhuangs = [];
 	$scope.showfilterZhengzhuangs = [];
 
-	$scope.showlimit = 5;
+	$scope.showlimit = 10;
 	$scope.zhenliaoJson = Questions.get({
 		gradeName: "zhenliao"
 	}, function(zhenliaoJson) {});
