@@ -12,6 +12,7 @@
         <script src="vendor/underscore-min.js"></script>
 
         <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/localStorageModule.js"></script>
         <script src="lib/angular/angular-resource.min.js"></script>
         <script src="services.js"></script>
         <script src="controllers.js"></script>
@@ -35,6 +36,12 @@
         <h1>中医课堂</h1>
     </div><!-- /header -->
     <div data-role="content">  
+ 
+        <p > <a data-role="button" href="#zhenliao_index" data-icon="arrow-r" data-iconpos="right" data-transition="slide">
+                中医诊疗
+            </a>
+        </p>
+ 
  
         <p > <a data-role="button" href="#88s_index" data-icon="arrow-r" data-iconpos="right" data-transition="slide">
                 88秒养生问答
@@ -115,12 +122,51 @@
         <h1>中医课堂</h1>
     </div><!-- /header -->
     <div data-role="content">  
-
-        <p ng-click="selectSantong('biqiao')"> <a data-role="button"  href="" data-icon="arrow-r"   data-transition="slide" data-iconpos="right">
-                鼻窍
+       <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup">
+                <label for="searchinput1">
+                </label>
+                <input name="" id="ST_searchBox" placeholder="输入最主要的症状" value="" type="search" />
+            </fieldset>
+        </div>
+        <p ng-click="selectSantong('biqiao')" ng-repeat="qiao in filterQiaos"> <a data-role="button"  href="" data-icon="arrow-r"   data-transition="slide" data-iconpos="right">
+                {{qiao.cname}}
             </a>
         </p>      
 
+                <h4>
+                    在上框中输入您目前最关心的身体症状，比如头痛、鼻塞等，我们会自动推荐最可能相关的检查流程
+                </h4>
+                <h4>
+                    如果根据输入的症状未能查询到相关检查流程，请点击下面的完整检查进行全面的检查
+                </h4>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <a data-role="button" href="#santong_complete_index">
+                            完整检查
+                        </a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a ng-show="checkHistory()" data-role="button" href="#page1">
+                            历史记录
+                        </a>
+                    </div>
+                </div>
+   
+
+    </div><!-- /content -->
+    <div data-role="footer">
+        <h4>学习中医，养护生命！</h4>
+    </div><!-- /footer --> 
+</div><!-- /page -->
+
+
+<div data-role="page" id="santong_complete_index">
+    <div data-role="header">
+        <h1>中医课堂</h1>
+    </div><!-- /header -->
+    <div data-role="content">  
+     
         <p > <a data-role="button"  href="anserquestion.html" data-icon="arrow-r"  data-transition="slide" data-iconpos="right">
                 皮窍、毛窍
             </a>
@@ -129,7 +175,6 @@
                 喉窍
             </a>
         </p>      
-
 
     </div><!-- /content -->
     <div data-role="footer">

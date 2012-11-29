@@ -2,38 +2,66 @@
 
 /* Controllers */
 
-function IndexCtrl($scope, $http, Questions, RemoteQuestions) {
+function IndexCtrl($scope, $filter,$http, Questions, RemoteQuestions, localStorageService) {
 
+	//根据症状过滤出的检测流程
+	$scope.filterQiaos = [];
+	$scope.santongJson = Questions.get({
+		gradeName: "santong"
+	}, function(santongJson) {});
 
+	//可用来刷新动态html的jm效果
+	// $('#list_container').trigger('create');
 
-	//选择考试阶段
+	//定义症状输入窗口自动过滤动作
+	$("#ST_searchBox").keyup(function() {
+		var filter = $(this).val();
+		$scope.filterQiaos = $filter('filter')($scope.santongJson.qiaos, filter);
+		console.log(filter);
+		console.log($scope.filterQiaos.length);
+
+		$scope.$apply();
+
+	});
+
+	//检查是否有体检的历史记录
+	$scope.checkHistory = function() {
+		// localStorageService.clearAll();
+		// localStorageService.remove(key);
+		if(localStorageService.get('checkHistory')) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+
+	//选择某一窍进行检查，转入答题页面
 	$scope.selectSantong = function(qiaoName) {
 		// myInit();
 		var qiaoName = qiaoName || 'biqiao';
-		$scope.santongJson = Questions.get({
-			gradeName: "santong"
-		}, function(grade) { //题库对象
-			// console.log($scope.grade);
-			$scope.currentQiao = $scope.santongJson[qiaoName];
-			$scope.currentQuestion = $scope.currentQiao.questions.start;
-			// $scope.total = $scope.grade.questions.length;
-		});
+		 _.filter($scope.santongJson.qiaos, function(qiao){ return qiao.name == qiaoName; });
+
+		$scope.currentQiao =  _.filter($scope.santongJson.qiaos, function(qiao){ return qiao.name == qiaoName; })[0];
+		$scope.currentQuestion = $scope.currentQiao.questions.start;
 		$.mobile.changePage($('#santong_answer'), {
 			transition: "slide"
 		});
 	};
 
+	//选择某个答案后，在此处进行下一步判断
 	$scope.STselectAnswer = function(answer) {
-		// console.log(answer);
 		var answer = $scope.currentQuestion[answer];
-		// console.log($scope.currentQuestion);
-		// console.log(answer);
-		if(_.indexOf(['ok','fail','hs','hx','rs','rx'],answer)!=-1) {
-			$scope.resultInfo = $scope.currentQiao.result[answer].content
+		if(_.indexOf(['ok', 'fail', 'hs', 'hx', 'rs', 'rx'], answer) != -1) {
+			$scope.resultInfo = $scope.currentQiao.result[answer].content;
+			localStorageService.add('checkHistory', JSON.stringify({
+				time: 12331,
+				qiao: 'biqiao',
+				result: 'hs'
+			}));
 			$.mobile.changePage($('#STanswerResult'), {
 				transition: "slide"
 			});
-		} else  {
+		} else {
 			$scope.currentQuestion = $scope.currentQiao.questions[answer];
 		}
 	};
@@ -41,9 +69,11 @@ function IndexCtrl($scope, $http, Questions, RemoteQuestions) {
 	$scope.STrestart = function() {
 		$scope.currentQuestion = $scope.currentQiao.questions["start"];
 		$.mobile.changePage($('#santong_answer'), {
-				transition: "slide"
-			});
-	}
+			transition: "slide"
+		});
+
+		// console.log(JSON.parse(localStorageService.get('checkHistory')));
+	};
 
 
 
@@ -165,4 +195,42 @@ function IndexCtrl($scope, $http, Questions, RemoteQuestions) {
 		$scope.rightNumber = 0; //答对了几道题
 		$scope.score = 0; //得分		
 	}
+}
+
+
+//中医诊疗标准
+function zhenliaoCtrl($scope, $filter,$http, Questions, RemoteQuestions, localStorageService) {
+
+	//根据症状过滤出的检测流程
+	$scope.filterZhengzhuangs = [];
+	$scope.zhenliaoJson = Questions.get({
+		gradeName: "zhenliao"
+	}, function(zhenliaoJson) {});
+
+	//可用来刷新动态html的jm效果
+	// $('#list_container').trigger('create');
+
+	//定义症状输入窗口自动过滤动作
+	// $(".ZL_searchBox").bind( "change", function(event, ui) {
+
+	$("#ZL_searchBox").blur(function() {
+
+		$("#zhenliao_tip").hide(); 
+		$("#zhengzhuangList").empty(); 
+		var filter = $(this).val();
+		$scope.filterZhengzhuangs = $filter('filter')($scope.zhenliaoJson.zhengzhuangs, filter);
+		console.log(filter);
+		console.log($scope.filterZhengzhuangs.length);
+
+		$scope.filterZhengzhuangs.forEach(function(zhengzhuang){
+			$("#zhengzhuangList").append('<div id= "zhengzhuangList"><div data-role="collapsible">           <h3>'+zhengzhuang.cname+'</h3>           <p>症状：'+zhengzhuang.zhengzhuangs+'</p>         <p>治法：'+zhengzhuang.zhifa+'</p>        <p>方药：'+zhengzhuang.fangyao+'</p>        </div> ')
+		});
+
+		$scope.$apply();
+
+		$('#zhenliao_index').trigger('pagecreate');
+
+	});
+
+
 }

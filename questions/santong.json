@@ -1,8 +1,10 @@
 {
     "level": "santong",
     "name": "三通体质检测",
-    "biqiao":{
-        "name":"鼻窍通畅检测",
+    "qiaos": [{
+        "cname": "鼻窍",
+        "name": "biqiao",
+
         "result": {
             "ok": {
                 "content": "鼻窍正常"
@@ -12,62 +14,66 @@
             },
             "hs": {
                 "content": "鼻窍寒实",
-                "zhengzhuang":[
-                    {"content":"头痛"},
-                    {"content":"鼻塞"}
-                ],
-                "fangji":{
-                    "title":"四物汤",
-                    "content":"当归、川芎、芍药、熟地各10克",
-                    "yongfa":"一日三次"
+                "zhengzhuang": [{
+                    "content": "头痛"
+                }, {
+                    "content": "鼻塞"
+                }],
+                "fangji": {
+                    "title": "四物汤",
+                    "content": "当归、川芎、芍药、熟地各10克",
+                    "yongfa": "一日三次"
                 },
-                "shiliao":{
-                    "content":"葱白注水，当茶喝"
+                "shiliao": {
+                    "content": "葱白注水，当茶喝"
                 }
             },
             "hx": {
                 "content": "鼻窍寒虚",
-                "zhengzhuang":[
-                    {"content":"头痛"},
-                    {"content":"鼻塞"}
-                ],
-                "fangji":{
-                    "title":"四物汤",
-                    "content":"当归、川芎、芍药、熟地各10克",
-                    "yongfa":"一日三次"
+                "zhengzhuang": [{
+                    "content": "头痛"
+                }, {
+                    "content": "鼻塞"
+                }],
+                "fangji": {
+                    "title": "四物汤",
+                    "content": "当归、川芎、芍药、熟地各10克",
+                    "yongfa": "一日三次"
                 },
-                "shiliao":{
-                    "content":"葱白注水，当茶喝"
+                "shiliao": {
+                    "content": "葱白注水，当茶喝"
                 }
             },
             "rs": {
                 "content": "鼻窍热实",
-                "zhengzhuang":[
-                    {"content":"头痛"},
-                    {"content":"鼻塞"}
-                ],
-                "fangji":{
-                    "title":"四物汤",
-                    "content":"当归、川芎、芍药、熟地各10克",
-                    "yongfa":"一日三次"
+                "zhengzhuang": [{
+                    "content": "头痛"
+                }, {
+                    "content": "鼻塞"
+                }],
+                "fangji": {
+                    "title": "四物汤",
+                    "content": "当归、川芎、芍药、熟地各10克",
+                    "yongfa": "一日三次"
                 },
-                "shiliao":{
-                    "content":"葱白注水，当茶喝"
+                "shiliao": {
+                    "content": "葱白注水，当茶喝"
                 }
             },
             "rx": {
                 "content": "鼻窍热虚",
-                "zhengzhuang":[
-                    {"content":"头痛"},
-                    {"content":"鼻塞"}
-                ],
-                "fangji":{
-                    "title":"四物汤",
-                    "content":"当归、川芎、芍药、熟地各10克",
-                    "yongfa":"一日三次"
+                "zhengzhuang": [{
+                    "content": "头痛"
+                }, {
+                    "content": "鼻塞"
+                }],
+                "fangji": {
+                    "title": "四物汤",
+                    "content": "当归、川芎、芍药、熟地各10克",
+                    "yongfa": "一日三次"
                 },
-                "shiliao":{
-                    "content":"葱白注水，当茶喝"
+                "shiliao": {
+                    "content": "葱白注水，当茶喝"
                 }
             }
         },
@@ -98,6 +104,108 @@
                 "n": "rx"
             }
         }
-    }
-  
+    }, {
+        "cname": "毛窍",
+        "name": "maoqiao",
+        "result": {
+            "ok": {
+                "content": "毛窍正常"
+            },
+            "fail": {
+                "content": "您的体质为非典型体质，为避免出现问题，本程序无法提供体质检查结果。请咨询专业中医进行准确的体质检查。"
+            },
+            "hs": {
+                "content": "鼻窍寒实",
+                "zhengzhuang": [{
+                    "content": "头痛"
+                }, {
+                    "content": "鼻塞"
+                }],
+                "fangji": {
+                    "title": "四物汤",
+                    "content": "当归、川芎、芍药、熟地各10克",
+                    "yongfa": "一日三次"
+                },
+                "shiliao": {
+                    "content": "葱白注水，当茶喝"
+                }
+            },
+            "hx": {
+                "content": "鼻窍寒虚",
+                "zhengzhuang": [{
+                    "content": "头痛"
+                }, {
+                    "content": "鼻塞"
+                }],
+                "fangji": {
+                    "title": "四物汤",
+                    "content": "当归、川芎、芍药、熟地各10克",
+                    "yongfa": "一日三次"
+                },
+                "shiliao": {
+                    "content": "葱白注水，当茶喝"
+                }
+            },
+            "rs": {
+                "content": "鼻窍热实",
+                "zhengzhuang": [{
+                    "content": "头痛"
+                }, {
+                    "content": "鼻塞"
+                }],
+                "fangji": {
+                    "title": "四物汤",
+                    "content": "当归、川芎、芍药、熟地各10克",
+                    "yongfa": "一日三次"
+                },
+                "shiliao": {
+                    "content": "葱白注水，当茶喝"
+                }
+            },
+            "rx": {
+                "content": "鼻窍热虚",
+                "zhengzhuang": [{
+                    "content": "头痛"
+                }, {
+                    "content": "鼻塞"
+                }],
+                "fangji": {
+                    "title": "四物汤",
+                    "content": "当归、川芎、芍药、熟地各10克",
+                    "yongfa": "一日三次"
+                },
+                "shiliao": {
+                    "content": "葱白注水，当茶喝"
+                }
+            }
+        },
+        "questions": {
+            "start": {
+                "content": "您是否有鼻塞的现象？",
+                "y": "jinqi",
+                "n": "ok"
+            },
+            "jinqi": {
+                "content": "鼻塞的现象是否是近期才出现的？",
+                "y": "paleng",
+                "n": "fail"
+            },
+            "paleng": {
+                "content": "您是否比一般人怕冷",
+                "y": "ehan",
+                "n": "q2"
+            },
+            "ehan": {
+                "content": "怕冷的情况下，是否加衣服也不能减轻冷的感觉",
+                "y": "hs",
+                "n": "hx"
+            },
+            "q2": {
+                "content": "热实",
+                "y": "rs",
+                "n": "rx"
+            }
+        }
+    }]
+
 }
