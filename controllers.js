@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-function IndexCtrl($scope, $filter,$http, Questions, RemoteQuestions, localStorageService) {
+function IndexCtrl($scope, $filter, $http, Questions, RemoteQuestions, localStorageService) {
 
 	//根据症状过滤出的检测流程
 	$scope.filterQiaos = [];
@@ -12,7 +12,6 @@ function IndexCtrl($scope, $filter,$http, Questions, RemoteQuestions, localStora
 
 	//可用来刷新动态html的jm效果
 	// $('#list_container').trigger('create');
-
 	//定义症状输入窗口自动过滤动作
 	$("#ST_searchBox").keyup(function() {
 		var filter = $(this).val();
@@ -39,9 +38,13 @@ function IndexCtrl($scope, $filter,$http, Questions, RemoteQuestions, localStora
 	$scope.selectSantong = function(qiaoName) {
 		// myInit();
 		var qiaoName = qiaoName || 'biqiao';
-		 _.filter($scope.santongJson.qiaos, function(qiao){ return qiao.name == qiaoName; });
+		_.filter($scope.santongJson.qiaos, function(qiao) {
+			return qiao.name == qiaoName;
+		});
 
-		$scope.currentQiao =  _.filter($scope.santongJson.qiaos, function(qiao){ return qiao.name == qiaoName; })[0];
+		$scope.currentQiao = _.filter($scope.santongJson.qiaos, function(qiao) {
+			return qiao.name == qiaoName;
+		})[0];
 		$scope.currentQuestion = $scope.currentQiao.questions.start;
 		$.mobile.changePage($('#santong_answer'), {
 			transition: "slide"
@@ -199,38 +202,58 @@ function IndexCtrl($scope, $filter,$http, Questions, RemoteQuestions, localStora
 
 
 //中医诊疗标准
-function zhenliaoCtrl($scope, $filter,$http, Questions, RemoteQuestions, localStorageService) {
+
+function zhenliaoCtrl($scope, $filter, $http, Questions, RemoteQuestions, localStorageService) {
 
 	//根据症状过滤出的检测流程
 	$scope.filterZhengzhuangs = [];
+	$scope.showfilterZhengzhuangs = [];
+
+	$scope.showlimit = 5;
 	$scope.zhenliaoJson = Questions.get({
 		gradeName: "zhenliao"
 	}, function(zhenliaoJson) {});
 
-	//可用来刷新动态html的jm效果
-	// $('#list_container').trigger('create');
-
 	//定义症状输入窗口自动过滤动作
-	// $(".ZL_searchBox").bind( "change", function(event, ui) {
-
 	$("#ZL_searchBox").blur(function() {
-
-		$("#zhenliao_tip").hide(); 
-		$("#zhengzhuangList").empty(); 
 		var filter = $(this).val();
-		$scope.filterZhengzhuangs = $filter('filter')($scope.zhenliaoJson.zhengzhuangs, filter);
-		console.log(filter);
-		console.log($scope.filterZhengzhuangs.length);
-
-		$scope.filterZhengzhuangs.forEach(function(zhengzhuang){
-			$("#zhengzhuangList").append('<div id= "zhengzhuangList"><div data-role="collapsible">           <h3>'+zhengzhuang.cname+'</h3>           <p>症状：'+zhengzhuang.zhengzhuangs+'</p>         <p>治法：'+zhengzhuang.zhifa+'</p>        <p>方药：'+zhengzhuang.fangyao+'</p>        </div> ')
-		});
-
-		$scope.$apply();
-
-		$('#zhenliao_index').trigger('pagecreate');
-
+		if(filter && filter.length > 0) {
+			$("#zhenliao_tip").hide();
+			$scope.currentEnd = 0;
+			$("#zhengzhuangList").empty();
+			$scope.filterZhengzhuangs = $filter('filter')($scope.zhenliaoJson.zhengzhuangs, filter);
+			// console.log(filter);
+			// console.log($scope.filterZhengzhuangs.length);
+			$scope.getMore();
+		}
 	});
 
+	$scope.showMore = function() {
+		if($scope.currentEnd < $scope.filterZhengzhuangs.length) {
+			return true;
+		} else {
+			return false;
+		}
+	};
 
+	$scope.getMore = function() {
+		if($scope.filterZhengzhuangs.length > $scope.currentEnd + $scope.showlimit) {
+			$scope.showfilterZhengzhuangs = $scope.filterZhengzhuangs.slice($scope.currentEnd, $scope.currentEnd + $scope.showlimit);
+			$scope.currentEnd = $scope.currentEnd + $scope.showlimit;
+		} else {
+			$scope.showfilterZhengzhuangs = $scope.filterZhengzhuangs.slice($scope.currentEnd, $scope.filterZhengzhuangs.length - 1);
+			$scope.currentEnd = $scope.filterZhengzhuangs.length;
+		}
+		$scope.showfilterZhengzhuangs.forEach(function(zhengzhuang) {
+
+			$("#zhengzhuangList").append('<div id= "zhengzhuangList"><div data-role="collapsible">           <h3>' + zhengzhuang.cname + '</h3>           <p>症状：' + zhengzhuang.zhengzhuangs + '</p>         <p>治法：' + zhengzhuang.zhifa + '</p>        <p>方药：' + zhengzhuang.fangyao + '</p>        </div> ')
+		});
+
+		if($scope.currentEnd == $scope.showlimit) {
+			$scope.$apply();
+		}
+
+		//可用来刷新动态html的jm效果
+		$('#zhenliao_index').trigger('pagecreate');
+	};
 }
